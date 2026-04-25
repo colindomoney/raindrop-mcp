@@ -43,40 +43,32 @@ export const textContent = (text: string): McpContent => ({
 });
 
 export const makeCollectionLink = (collection: any): McpContent => ({
-  type: "resource",
-  resource: {
-    uri: `mcp://collection/${collection._id}`,
-    mimeType: "application/json",
-    text: JSON.stringify(
-      {
-        _id: collection._id,
-        title: collection.title || "Untitled Collection",
-        count: collection.count || 0,
-        description: collection.description,
-      },
-      null,
-      2,
-    ),
-  },
+  type: "text",
+  text: JSON.stringify(
+    {
+      _id: collection._id,
+      title: collection.title || "Untitled Collection",
+      count: collection.count || 0,
+      description: collection.description,
+    },
+    null,
+    2,
+  ),
 });
 
 export const makeBookmarkLink = (bookmark: any): McpContent => ({
-  type: "resource",
-  resource: {
-    uri: `mcp://raindrop/${bookmark._id}`,
-    mimeType: "application/json",
-    text: JSON.stringify(
-      {
-        _id: bookmark._id,
-        title: bookmark.title || "Untitled",
-        link: bookmark.link,
-        excerpt: bookmark.excerpt,
-        tags: bookmark.tags,
-      },
-      null,
-      2,
-    ),
-  },
+  type: "text",
+  text: JSON.stringify(
+    {
+      _id: bookmark._id,
+      title: bookmark.title || "Untitled",
+      link: bookmark.link,
+      excerpt: bookmark.excerpt,
+      tags: bookmark.tags,
+    },
+    null,
+    2,
+  ),
 });
 
 export const setIfDefined = (

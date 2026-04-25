@@ -103,13 +103,13 @@ describeIf("MCPJam SDK Integration", () => {
     if (!content) {
       throw new Error("Expected diagnostics content item");
     }
-    expect(content.type).toBe("resource");
-    if (!content.resource || !content.resource.text) {
-      throw new Error("Expected diagnostics resource payload");
+    expect(content.type).toBe("text");
+    const textContent = content as { type: "text"; text: string };
+    if (!textContent.text) {
+      throw new Error("Expected diagnostics text payload");
     }
-    expect(content.resource.uri).toBe("diagnostics://server");
 
-    const diagnostics = JSON.parse(content.resource.text as string);
+    const diagnostics = JSON.parse(textContent.text);
     expect(diagnostics.mcpProtocolVersion).toBe("2025-11-25");
     expect(diagnostics.version).toBeDefined();
   });

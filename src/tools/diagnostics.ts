@@ -12,12 +12,8 @@ export const DiagnosticsInputSchema = z.object({
 export const DiagnosticsOutputSchema = z.object({
   content: z.array(
     z.object({
-      type: z.literal("resource"),
-      resource: z.object({
-        uri: z.string(),
-        mimeType: z.string().optional(),
-        text: z.string(),
-      }),
+      type: z.literal("text"),
+      text: z.string(),
     }),
   ),
 });
@@ -90,12 +86,8 @@ export const createDiagnosticsTool = (
       return {
         content: [
           {
-            type: "resource",
-            resource: {
-              uri: "diagnostics://server",
-              mimeType: "application/json",
-              text: JSON.stringify(diagnosticsData, null, 2),
-            },
+            type: "text",
+            text: JSON.stringify(diagnosticsData, null, 2),
           },
         ],
       };

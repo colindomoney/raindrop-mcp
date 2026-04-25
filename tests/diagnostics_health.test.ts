@@ -13,10 +13,9 @@ describe("Diagnostics Health Stats", () => {
     expect(result.content).toBeDefined();
 
     const content = result.content[0];
-    expect(content.type).toBe("resource");
-    expect(content.resource.uri).toBe("diagnostics://server");
+    expect(content.type).toBe("text");
 
-    const diagnostics = JSON.parse(content.resource.text);
+    const diagnostics = JSON.parse(content.text);
     expect(diagnostics.libraryHealth).toBeDefined();
 
     // Core stats
