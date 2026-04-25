@@ -4,6 +4,7 @@ import {
   ListPromptsRequestSchema,
   ListResourcesRequestSchema,
   ReadResourceRequestSchema,
+  SetLevelRequestSchema,
   SubscribeRequestSchema,
   UnsubscribeRequestSchema,
   type Prompt,
@@ -257,6 +258,13 @@ export class RaindropMCPService {
         const { uri } = request.params;
         this.resourceSubscriptions.delete(uri);
         return {}; // Empty object indicates successful unsubscription
+      }),
+    );
+
+    this.server.server.setRequestHandler(
+      SetLevelRequestSchema,
+      this.asyncHandler(async (_request: any) => {
+        return {};
       }),
     );
   }
