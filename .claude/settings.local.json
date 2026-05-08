@@ -22,7 +22,19 @@
       "Bash(pkill:*)",
       "Bash(mv:*)",
       "Bash(bun test:*)",
-      "Bash(bun:*)"
+      "Bash(bun:*)",
+      "Bash(npx @modelcontextprotocol/inspector node --env-file=.env build/index.js)",
+      "Bash(lsof -ti:6277 -ti:5173)",
+      "Bash(xargs kill *)",
+      "Bash(lsof -ti:6277 -ti:6274 -ti:5173)",
+      "Bash(DANGEROUSLY_OMIT_AUTH=true npx @modelcontextprotocol/inspector node --env-file=.env build/index.js)",
+      "Bash(lsof -ti:6277 -ti:6274)",
+      "Bash(python3 -c \"import sys,json; data=sys.stdin.read\\(\\).split\\('\\\\n'\\); [print\\(json.dumps\\(json.loads\\(l\\).get\\('result',{}\\).get\\('content',[]\\),indent=2\\)\\) for l in data if l.strip\\(\\) and 'result' in l]\")",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(python3 -c ' *)"
     ],
     "deny": []
   }
